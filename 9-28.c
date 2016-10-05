@@ -19,6 +19,30 @@ char * cop(char *dest, char *source) {
     dest[x] = source[x];
     x++;
   }
+  dest[x] == 0;
+  return dest;
+}
+
+char * ncope(char *dest, char *source, int n) {
+  int x = 0; //index
+  while (n > 0) {
+    dest[x] = source[x];
+    n--;
+    x++;
+  }
+  dest[x] == 0;
+  return dest;
+}
+
+char * whiskers(char *dest, char *source) {
+  int end = strlen(dest);
+  int x = 0; //index
+  while (source[x] != 0) {
+    dest[end] = source[x];
+    x++;
+    end++;
+  }
+  dest[end] == 0;
   return dest;
 }
 
@@ -31,7 +55,7 @@ char * nwhiskers(char *dest, char *source, int n) {
     end++;
     n--;
   }
-  dest[end+1] == 0;
+  dest[end] == 0;
   return dest;
 }
 
@@ -78,10 +102,28 @@ char * christmas( char *s, char c ) {
       x++;
       found++;
     }
+    ret[x] == 0;
     return ret;
   }
 }
 
+/**
+   char * strawberry( char *s1, char *s2 ) {
+       int ctr = 0;
+           int found = -1;
+	       char *ret = christmas(s1, s2[ctr]);
+	           if (ret != 0) {
+		           int x = 1;
+			           while (x < strlen(s2)) {
+				               if (s2[x] != ret[x]) {
+					                       break;
+							                   }
+									               x++;
+										               }
+											               found == ctr;
+												           }
+													   }
+**/
 
 int main() {
 
@@ -94,10 +136,30 @@ int main() {
   printf("built-in strlen: %d\n", strlen(wub));
 
   printf("\nSTRCPY\n");
-  printf("before my strcpy: %s\n", lub);
+  printf("empty str: %s\n", lub);
+  printf("to be copied: %s\n", wub);
   printf("my strcpy: %s\n", cop(lub, wub));
   printf("after my strcpy: %s\n", lub);
   printf("built-in strcpy: %s\n", strcpy(lub, wub));
+
+  char pepper[50] = "ineedmoresleepplease";
+  char pizza[30];
+
+  printf("\nSTRNCPY\n");
+  printf("empty str: %s\n", pizza);
+  printf("to be copied (BUT set n = 14): %s\n", pepper);
+  printf("my strncpy: %s\n", ncope(pizza, pepper, 14));
+  printf("after my strncpy: %s\n", pizza);
+  printf("built-in strncpy: %s\n", strncpy(pizza, pepper, 14));
+
+  char pie[30] = "heyowassupbro";
+  char crust[30] = "nvmidontlikeyou";
+  printf("\nSTRCAT\n");
+  printf("string 1: %s\n", pie);
+  printf("string 2: %s\n", crust);
+  printf("my strcat: %s\n", whiskers(pie, crust));
+  printf("built-in strcat (repeats procedure): %s\n", strcat(pie, crust));
+  printf("concatenated str: %s\n", pie);
 
   char tub[] = ", obviously dude";
   printf("\nSTRNCAT\n");
